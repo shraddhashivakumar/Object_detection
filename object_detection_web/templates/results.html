@@ -5,37 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detection Results</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            font-family: 'Times New Roman', Times, serif; /* Font style */
+        }
+
+        .container {
+            max-width: 1200px; /* Max width for container */
+            margin: 0 auto; /* Center container */
+            padding: 50px; /* Padding for the container */
+            text-align: center; /* Center text */
+        }
+
+        h1 {
+            font-size: 3.5em; /* Large font size for the heading */
+            margin-bottom: 30px; /* Space below heading */
+        }
+
+        .card {
+            background-color: #1a1a1a; /* Darker grey for card background */
+            border: none; /* No border */
+            border-radius: 10px; /* Rounded edges */
+            padding: 20px; /* Padding for card */
+            margin: 20px; /* Space around cards */
+            text-align: left; /* Left align text */
+            display: inline-block; /* Allow side-by-side layout */
+            width: 300px; /* Fixed width for cards */
+        }
+
+        /* Button styling */
+        .btn-custom {
+            background-color: #444; /* Dark grey button */
+            color: white; /* White text color */
+            border: none; /* No border */
+            margin-top: 20px; /* Space above button */
+        }
+
+        .btn-custom:hover {
+            background-color: #555; /* Lighter grey on hover */
+        }
+
+        /* Styling for the prediction result */
+        .prediction {
+            font-size: 2.5em; /* Larger font size for prediction */
+            margin-top: 10px; /* Space above prediction */
+            font-weight: bold; /* Bold font for emphasis */
+        }
+
+        .confidence {
+            font-size: 1.5em; /* Slightly larger font for confidence level */
+            margin-top: 5px; /* Space above confidence */
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Detection Results</h1>
-        
-        <!-- Display the image with bounding box -->
-        <div class="text-center">
-            <img src="/uploads/{{ image_name }}" class="img-fluid mx-auto d-block" alt="Processed Image with Bounding Box">
-        </div>
-        
-        <!-- Display the best prediction -->
-        <h3 class="mt-4">Highest Confidence Object Detected:</h3>
-        <ul class="list-group">
-            <li class="list-group-item">
-                <strong>{{ best_prediction[1] }}</strong> - Confidence: {{ best_prediction[2] * 100 | round(2) }}%
-            </li>
-        </ul>
+    <div class="container">
+        <h1>Detection Results</h1>
 
-        <!-- Link to search for the detected object on Google -->
-        <div class="text-center mt-4">
-            <a href="https://www.google.com/search?q={{ best_prediction[1] }}" target="_blank" class="btn btn-primary">
+        <!-- Additional information cards -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <h3>Search Integration</h3>
+                    <p>Connects effortlessly to Google for additional information on detected objects.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <h3>Image Upload</h3>
+                    <p>Quickly upload your images and see results in seconds.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display the image with bounding box -->
+        <div class="text-center mb-4">
+            <img src="/uploads/{{ image_name }}" class="img-fluid" alt="Processed Image with Bounding Box" style="max-width: 100%; height: auto;">
+        </div>
+
+        <!-- Display the best prediction -->
+        <div class="mb-4">
+            <h3>Highest Confidence Object Detected:</h3>
+            <p class="prediction">{{ best_prediction[1] }}</p>
+            <p class="confidence">Confidence: {{ best_prediction[2] * 100 | round(2) }}%</p>
+        </div>
+
+        <!-- Button section -->
+        <div class="d-flex justify-content-center mb-4">
+            <!-- Link to search for the detected object on Google -->
+            <a href="https://www.google.com/search?q={{ best_prediction[1] }}" target="_blank" class="btn btn-custom me-3">
                 Search for "{{ best_prediction[1] }}" on Google
             </a>
-        </div>
-        
-        <!-- Button to upload another image -->
-        <div class="text-center mt-4">
-            <a href="/" class="btn btn-secondary">Upload Another Image</a>
+            <!-- Button to upload another image -->
+            <a href="/" class="btn btn-secondary">
+                Upload Another Image
+            </a>
         </div>
     </div>
-    
+
     <!-- Bootstrap JS (Optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

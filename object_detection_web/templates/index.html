@@ -3,65 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Object Detection</title>
+    <title>Object Detection Hub</title>
     
     <!-- Bootstrap CSS for a modern look -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Add custom CSS for background image and styling -->
+
+    <!-- Custom CSS for styling -->
     <style>
-        /* Add background image to the entire body */
         body {
-            background-image: url("C:\app\object_detection_web\static\images\bg.jpg");  /* Path to your background image */
-            background-size: cover;        /* Makes the image cover the entire page */
-            background-position: center;   /* Centers the background image */
-            background-attachment: fixed;  /* Keeps the background fixed when scrolling */
-            background-repeat: no-repeat;  /* Avoid repeating the background */
-            color: white;                  /* Change the font color to white for readability */
+            font-family: 'Times New Roman', Times, serif; /* Use Times New Roman font */
+            background-color: #f9f9f9; /* Light grey background */
+            color: #333; /* Dark grey text color */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
         }
 
-        /* Styling for the container */
-        .container {
-            background-color: rgba(0, 0, 0, 0.7);  /* Transparent background for form area */
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 100px;
+        /* Header styling */
+        header {
+            background-color: #222; /* Dark background for header */
+            color: white; /* White text color */
+            padding: 20px; /* Padding for header */
+            text-align: center; /* Center align text */
         }
 
-        /* Styling for text elements */
+        /* Main container styling */
+        .main-container {
+            display: flex; /* Flexbox layout for main content */
+            justify-content: space-between; /* Space between columns */
+            padding: 20px; /* Padding for main container */
+            max-width: 1200px; /* Max width for the layout */
+            margin: auto; /* Center the layout */
+        }
+
+        /* Left column styling */
+        .left-column {
+            flex: 1; /* Allow the left column to grow */
+            padding: 20px; /* Padding for left column */
+            display: flex; /* Flexbox for vertical centering */
+            flex-direction: column; /* Vertical layout */
+            justify-content: center; /* Center content vertically */
+        }
+
         h1 {
-            font-family: 'Arial', sans-serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Text shadow for better readability */
-            text-align: center;
+            font-size: 3.5em; /* Large font size */
+            font-weight: bold; /* Bold font */
+            margin: 0; /* Remove default margin */
         }
 
-        /* Custom button styles */
-        .btn-primary {
-            background-color: #4CAF50; /* Green button */
-            border: none;
+        h2 {
+            font-size: 1.5em; /* Smaller font size for subtitle */
+            font-style: italic; /* Italic style */
+            margin: 10px 0; /* Space above and below */
         }
 
-        .btn-secondary {
-            background-color: #f44336; /* Red button */
-            border: none;
+        /* Right column styling */
+        .right-column {
+            flex: 1; /* Allow the right column to grow */
+            display: flex; /* Flexbox for vertical centering */
+            flex-direction: column; /* Vertical layout */
+            justify-content: space-around; /* Space items evenly */
+            padding: 20px; /* Padding for right column */
+        }
+
+        /* Card styling */
+        .card {
+            background-color: #eaeaea; /* Light grey card background */
+            border: 1px solid #444; /* Dark grey border */
+            border-radius: 10px; /* Rounded edges */
+            padding: 20px; /* Padding for card */
+            text-align: center; /* Center text */
+            margin-bottom: 20px; /* Space between cards */
+        }
+
+        /* Button styling */
+        .btn-custom {
+            background-color: #444; /* Dark grey button */
+            color: white; /* White text color */
+            border: none; /* No border */
+        }
+
+        .btn-custom:hover {
+            background-color: #555; /* Lighter grey on hover */
+        }
+
+        /* Upload text styling */
+        .upload-text {
+            margin-top: 20px; /* Space above the upload text */
+            text-align: center; /* Center the upload text */
+            font-size: 1.5em; /* Larger font size for visibility */
         }
     </style>
 </head>
 <body>
-    <div class="container text-center">
-        <h1>Upload an Image for Object Detection</h1>
-        
-        <!-- Form to upload image -->
-        <form method="POST" action="/upload" enctype="multipart/form-data">
-            <div class="form-group mt-4">
+    <header>
+        <h1>Object Detection Hub</h1>
+    </header>
+    
+    <div class="main-container">
+        <div class="left-column">
+            <h1>Discover a World of Possibilities</h1>
+            <h2>Detect with Confidence: Your Object Recognition Partner</h2>
+            <div class="upload-text">Upload an Image</div>
+            <form method="POST" action="/upload" enctype="multipart/form-data">
                 <input type="file" class="form-control-file" name="file" accept="image/*" required>
+                <button type="submit" class="btn btn-custom mt-3">Upload Image</button>
+            </form>
+        </div>
+
+        <div class="right-column">
+            <div class="card">
+                <h3>20k</h3>
+                <p>Images processed daily</p>
             </div>
-            <button type="submit" class="btn btn-primary mt-4">Upload Image</button>
-        </form>
-        
-        <!-- Button to upload another image -->
-        <div class="text-center mt-4">
-            <a href="/" class="btn btn-secondary">Upload Another Image</a>
+            <div class="card">
+                <h3>Google Search Integration</h3>
+                <p>Easily search for detected objects on Google.</p>
+            </div>
+            <div class="card">
+                <h3>Smart Object Recognition</h3>
+                <p>Utilize advanced algorithms to identify objects in your images quickly.</p>
+            </div>
         </div>
     </div>
     
